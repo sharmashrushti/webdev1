@@ -1,0 +1,157 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'USHA Consulting — HSE, Safety & Industrial Hygiene Consulting',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    actions={[
+      { variant: 'primary', text: 'Get in Touch', href: '/contact' },
+      { text: 'Our Services', href: '#services' },
+    ]}
+  >
+    <Fragment slot="title">
+      HSE Consulting You Can <span class="text-accent dark:text-white">Trust</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      <span class="font-semibold">USHA Consulting</span> delivers specialized Safety, Environment &amp;
+      Industrial Hygiene, and Electrical Safety consulting for chemical, pharmaceutical, oil &amp; gas,
+      and industrial clients across India. 200+ projects executed. 30 years of HSE expertise.
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget: Services ***** -->
+  <Features
+    id="services"
+    tagline="What We Do"
+    title="Our Services"
+    subtitle="Comprehensive HSE consulting built on decades of hands-on industrial experience."
+    items={[
+      {
+        title: 'Process Hazard Analysis',
+        description: 'HAZOP, HAZID, LOPA, BowTie, HIRA, and Dust Hazard Assessment studies led by an experienced PHA facilitator.',
+        icon: 'tabler:alert-triangle',
+      },
+      {
+        title: 'Process Safety Management',
+        description: 'PSM implementation as per OSHA 29 CFR 1910.119 or CCPS standards, from gap assessment through handholding.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Audits',
+        description: 'Safety, environmental, fire, electrical, and legal compliance audits across process and manufacturing sites.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Risk Management',
+        description: 'Hazardous area classification, pre-start-up safety reviews, and layout &amp; facility siting studies.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Training',
+        description: 'HSE, PSM, HAZOP, and construction safety training delivered in-company, online, and face-to-face.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Industrial Hygiene',
+        description: 'Chemical risk assessment and qualitative exposure assessment for industrial workplaces.',
+        icon: 'tabler:flask',
+      },
+    ]}
+  />
+
+  <!-- Content Widget: About preview ** -->
+  <Content
+    isReversed
+    tagline="Who We Are"
+    title="30 Years of HSE Expertise"
+    items={[
+      {
+        title: 'Qualified & certified',
+        description: 'Chemical Engineer with a diploma in Industrial Safety and a NEBOSH International General Certificate in Occupational Health & Safety.',
+      },
+      {
+        title: 'Cross-industry experience',
+        description: 'Construction, consultancy, oil & gas, FMCG, and chemical industries — including 6 years as a Utility Engineer.',
+      },
+      {
+        title: 'Certified auditor',
+        description: 'ISO 9001:2015, ISO 14001:2015, ISO 45001:2015, CE marking (PPE), and approved Pharmaceutical Supply Chain Initiative (PSCI) auditor.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Based in Pune, working nationwide</h3>
+      Incorporated in October 2020, USHA Consulting has executed more than 200 projects across chemical, pharmaceutical,
+      agrochemical, oil &amp; gas, steel, and power sectors in the last four years alone.
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Stats Widget ****************** -->
+  <Stats
+    stats={[
+      { title: 'Projects Executed', amount: '200+' },
+      { title: 'Years of Experience', amount: '30' },
+      { title: 'PHA Studies Conducted', amount: '250+' },
+      { title: 'Training Hours Delivered', amount: '1200+' },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Common questions about our HSE consulting services."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'What industries do you work with?',
+        description:
+          'We work across chemical, pharmaceutical, agrochemical, cosmetic, oil & gas, power generation, steel, logistics, construction, and other process industries.',
+      },
+      {
+        title: 'Do you conduct HAZOP and PHA studies?',
+        description:
+          'Yes — we have facilitated 250+ Process Hazard Analysis studies including HAZOP, HAZID, BowTie, HIRA, and Dust Hazard Assessment across pharmaceutical, chemical, and specialty manufacturing sites.',
+      },
+      {
+        title: 'Can you help with PSM implementation?',
+        description:
+          'Yes — we implement Process Safety Management as per OSHA 29 CFR 1910.119 (14 elements) or CCPS (20 elements), from gap assessment through phased rollout and handholding.',
+      },
+      {
+        title: 'Do you offer on-site training?',
+        description:
+          'We deliver in-company and open training courses, both face-to-face and via webinar, for managers, engineers, and operators, with customized programs on request.',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    actions={[
+      { variant: 'primary', text: 'Contact Us', href: '/contact' },
+    ]}
+  >
+    <Fragment slot="title">
+      Let's talk about your <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">HSE requirements</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      Get in touch to discuss audits, training, PHA studies, or PSM implementation for your site.
+    </Fragment>
+  </CallToAction>
+</Layout>

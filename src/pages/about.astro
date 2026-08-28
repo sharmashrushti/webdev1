@@ -1,0 +1,104 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'About Us — USHA Consulting',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    actions={[{ variant: 'primary', text: 'Get in Touch', href: '/contact' }]}
+  >
+    <Fragment slot="title">About USHA Consulting</Fragment>
+    <Fragment slot="subtitle">
+      A Pune-based HSE consulting firm specializing in Safety, Environment &amp; Industrial Hygiene,
+      and Electrical Safety — incorporated in October 2020, with more than 200 projects executed
+      across industrial and process sectors.
+    </Fragment>
+  </Hero>
+
+  <!-- Content Widget: Founder bio *** -->
+  <Content
+    isReversed
+    tagline="Our Team"
+    title="Ritesh Sharma"
+    items={[
+      {
+        title: 'Qualifications',
+        description:
+          'Chemical Engineer with a diploma in Industrial Safety and a NEBOSH International General Certificate in Occupational Health & Safety.',
+      },
+      {
+        title: 'Experience',
+        description:
+          '30 years as an HSE professional across construction, consultancy, oil & gas, FMCG, and chemical industries — including 6 years as a Utility Engineer.',
+      },
+      {
+        title: 'Certifications',
+        description:
+          'Certified ISO 9001:2015, ISO 14001:2015, and ISO 45001:2015 auditor; CE marking auditor for PPE certification; approved Pharmaceutical Supply Chain Initiative (PSCI) auditor.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">A career built on-site</h3>
+      Ritesh Sharma founded USHA Consulting after nearly three decades working directly in
+      construction, oil &amp; gas, FMCG, and chemical manufacturing environments — bringing hands-on
+      operational knowledge to every audit, training, and hazard study.
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Stats Widget ****************** -->
+  <Stats
+    stats={[
+      { title: 'PHA Studies Facilitated', amount: '250+' },
+      { title: 'Audits Conducted', amount: '300+' },
+      { title: 'Management System Audits', amount: '100+' },
+      { title: 'Training Hours Delivered', amount: '1200+' },
+    ]}
+  />
+
+  <!-- Content Widget: Track record ** -->
+  <Content
+    items={[
+      {
+        title: 'PSCI Audits',
+        description: '20 Pharmaceutical Supply Chain Initiative audits completed for leading pharmaceutical manufacturers.',
+      },
+      {
+        title: 'Due Diligence',
+        description: '10 EHS due diligence audits completed during company acquisitions.',
+      },
+      {
+        title: 'PSM Implementation',
+        description: 'Process Safety Management implemented in 10+ companies as per OSHA 29 CFR 1910.119.',
+      },
+      {
+        title: 'Industrial Hygiene',
+        description: 'Industrial Hygiene programs implemented across 3 companies, plus environment clearance support.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Track record</h3>
+      A sample of the work completed across pharmaceutical, chemical, agrochemical, and industrial sectors.
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    actions={[{ variant: 'primary', text: 'Contact Us', href: '/contact' }]}
+  >
+    <Fragment slot="title">Ready to discuss your HSE needs?</Fragment>
+    <Fragment slot="subtitle">Reach out to talk through audits, training, or hazard studies for your site.</Fragment>
+  </CallToAction>
+</Layout>

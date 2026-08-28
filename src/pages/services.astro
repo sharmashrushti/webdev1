@@ -1,0 +1,216 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Our Services',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Our Services"
+    title="HSE Consulting, Audits & Training"
+    subtitle="Usha Consulting provides specialised services in Safety, Environment & Industrial Hygiene and Electrical Safety, with over 200 projects executed across 30 years of combined HSE experience."
+    actions={[{ variant: 'primary', text: 'Contact Us', href: '/contact' }]}
+    image={{
+      src: '~/assets/images/header.png',
+      alt: 'Usha Consulting Services',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="What We Offer"
+    subtitle="A full range of HSE consulting services, tailored to industrial and process safety needs."
+    columns={3}
+    items={[
+      {
+        title: 'Process Hazard Assessment (PHA)',
+        description:
+          'HAZID, HAZOP, LOPA, BowTie, HIRA, Dust Hazard Assessment (DHA) and Quantitative Risk Analysis (QRA) — 250+ studies conducted as facilitators/chairpersons.',
+        icon: 'tabler:alert-triangle',
+      },
+      {
+        title: 'Risk Management',
+        description:
+          'Process Design Safety Review, Hazardous Area Classification, Highly Hazardous Chemicals review, Layout & Facility Siting, and Pre-Start-up Safety Review (PSSR).',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Process Safety Management (PSM)',
+        description:
+          'End-to-end PSM implementation as per OSHA 29 CFR 1910.119 (14 elements) or CCPS (20 elements), from gap assessment through handholding and monitoring.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Behaviour Based Safety',
+        description:
+          'Design and implementation of Behaviour Based Safety programs to build a stronger safety culture across your workforce.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Audits',
+        description:
+          'HSE due diligence, legal compliance, PSCI, PSM gap assessment, environment risk, and electrical safety audits — 300+ audits completed to date.',
+        icon: 'tabler:checklist',
+      },
+      {
+        title: 'Construction Safety',
+        description:
+          'Work at Height, Scaffolding, Excavation Safety, Lifting Tools & Tackle, and full construction SHE audits for industrial, metro and road projects.',
+        icon: 'tabler:crane',
+      },
+      {
+        title: 'Legal Compliance',
+        description:
+          'Legal register development and compliance audits against relevant national and state safety, environment and electrical regulations.',
+        icon: 'tabler:gavel',
+      },
+      {
+        title: 'Training',
+        description:
+          'In-company and open courses for managers, engineers and operators — PSM, HAZOP, LOTO, scaffolding, machine guarding, incident investigation and more. 1,200+ training man-hours delivered.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Fire Prevention & Fire Fighting',
+        description:
+          'Fire load calculation, fire audits, and Fire Prevention & Fire Fighting manual preparation to safeguard people and assets.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Electrical Safety',
+        description:
+          'Electrical safety audits and manuals, including compliance with National Building Code and Electricity Rules.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Environment',
+        description:
+          'Environment risk audits, water audits, environmental due diligence, and support in securing Environment Clearance.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'Standard Preparation',
+        description:
+          'Development of HSE manuals, Contractor Safety Management, Management of Change (MOC), Permit to Work, LOTO, and other core safety standards.',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: 'Industrial Hygiene',
+        description:
+          'Chemical risk assessment, qualitative exposure assessment, and task-based Industrial Hygiene Risk Assessment.',
+        icon: 'tabler:flask',
+      },
+      {
+        title: 'Consulting Services',
+        description:
+          'Tailored HSE consulting support across the project lifecycle — from design review to operational safety management.',
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'Inspection Services',
+        description:
+          'Crane inspection (per ASME 30.5 and API 2D), goods/passenger lift health assessment, and lifting tools & tackle inspection.',
+        icon: 'tabler:search',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Gap Assessment',
+        description:
+          'A focused 3–5 day review to identify where your current safety systems stand against the target PSM standard.',
+        icon: 'tabler:list-search',
+      },
+      {
+        title: 'Road Map Development',
+        description:
+          'Formation of an Apex Committee, PSM training for the steering committee and element champions, and development of element-wise procedures.',
+        icon: 'tabler:route',
+      },
+      {
+        title: 'Handholding & Implementation',
+        description:
+          'A structured 6/12/18-month handholding phase — launch, employee awareness training, KPIs per element, and ongoing progress monitoring.',
+        icon: 'tabler:hand-stop',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/header.png',
+      alt: 'PSM Implementation Process',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Our Process Safety Management Approach
+      </h3>
+      <p class="text-muted mb-4">
+        We implement PSM as per OSHA 29 CFR 1910.119 (14 elements) or the CCPS 20-element framework, in three clear
+        phases.
+      </p>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: '30 Years of Experience',
+        description: 'Three decades of hands-on HSE leadership across construction, oil & gas, FMCG and chemical industries.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: '200+ Projects Executed',
+        description: 'A proven track record across pharmaceuticals, agrochemicals, oil & gas, steel, power and more.',
+        icon: 'tabler:briefcase',
+      },
+      {
+        title: '300+ Audits Completed',
+        description: 'Safety, environment, fire, electrical, PSCI and PSM audits conducted for leading Indian and international companies.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Certified Expertise',
+        description: 'ISO 9001, 14001 & 45001 auditor, NEBOSH-certified, CE marking (PPE) auditor, and approved PSCI auditor.',
+        icon: 'tabler:award',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/header.png',
+      alt: 'Why Choose Usha Consulting',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Why Choose Usha Consulting</h3>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get in Touch',
+        href: '/contact',
+      },
+    ]}
+    title="Let's discuss your HSE needs"
+    subtitle="Reach out to Usha Consulting for audits, training, PSM implementation, or process safety support."
+  />
+</Layout>

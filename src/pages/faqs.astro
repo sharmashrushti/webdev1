@@ -1,0 +1,61 @@
+---
+import FAQs from '~/components/widgets/FAQs.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'FAQs',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Answers to common questions about Usha Consulting and our HSE services."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'What does Usha Consulting do?',
+        description:
+          'Usha Consulting is a Pune-based HSE (Health, Safety & Environment) consulting firm, incorporated in October 2020, specializing in Safety, Environment & Industrial Hygiene and Electrical Safety. We have completed 200+ projects in the last 4 years.',
+      },
+      {
+        title: 'What services do you offer?',
+        description:
+          'Process Hazard Assessment (PHA), Risk Management, Process Safety Management (PSM), Behaviour Based Safety, Audits, Construction Safety, Legal Compliance, Training, Fire Prevention & Fire Fighting, Electrical Safety, Environment Consulting, Standard Preparation, Industrial Hygiene, Consulting Services, and Inspection Services.',
+      },
+      {
+        title: 'What industries do you work with?',
+        description:
+          'Chemical, Pharmaceuticals (API & Formulation), Agrochemicals, Cosmetics, Oil & Gas, City Gas Distribution, Petrochemicals, Power Generation, Steel & Aluminum, Logistics & Warehousing, Education, and Construction (industrial, metro, and road projects).',
+      },
+      {
+        title: 'Who leads Usha Consulting?',
+        description:
+          'Ritesh Sharma, a Chemical Engineer with a diploma in Industrial Safety and a NEBOSH International General Certificate in Occupational Health & Safety, with 30 years of HSE experience across construction, consultancy, oil & gas, FMCG, and chemical industries. He is a certified ISO 9001:2015, ISO 14001:2015, and ISO 45001:2015 auditor, CE marking auditor for PPE certification, and an approved PSCI (Pharmaceutical Supply Chain Initiative) auditor.',
+      },
+      {
+        title: 'What kind of audits do you conduct?',
+        description:
+          'HSE due diligence, legal compliance, PSCI, PSM gap assessments (per OSHA 29 CFR 1910.119 and CCPS), environment risk audits, electrical safety audits, fire safety audits, and more — 300+ audits completed to date.',
+      },
+      {
+        title: 'Do you provide training?',
+        description:
+          'Yes — in-company and open courses, delivered face-to-face or via webinar, for managers, engineers, and operators. Topics include PSM, HAZOP, LOTO, scaffolding, machine guarding, incident investigation, and more, with 1,200+ training man-hours delivered.',
+      },
+      {
+        title: 'What is Process Hazard Analysis (PHA), and do you offer it?',
+        description:
+          'Yes — we conduct HAZID, HAZOP, LOPA, BowTie, HIRA, Dust Hazard Assessment (DHA), and QRA studies. We have completed 250+ PHA studies as facilitators/chairpersons.',
+      },
+      {
+        title: 'Where is Usha Consulting located, and how do I get in touch?',
+        description:
+          'We are based in Chinchwad, Pune, Maharashtra. Reach us at 9405884200 / 7875808125 or safety.ritesh@yahoo.com — or use the Contact Us page on this site.',
+      },
+    ]}
+  />
+</Layout>
