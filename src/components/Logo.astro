@@ -1,1 +1,13 @@
+---
+import { Image } from 'astro:assets';
+import logo from '~/assets/images/header1.jpeg';
+---
 
+<Image
+  src={logo}
+  alt="Usha Consulting"
+  class="h-12 md:h-14 w-auto max-w-none object-contain"
+  width={800}
+  height={160}
+  loading="eager"
+/>
