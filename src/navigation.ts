@@ -17,9 +17,8 @@ export const footerData = {
   socialLinks: [],
   footNote: `
         footNote: `
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-2">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-2">
       <span>© ${new Date().getFullYear()} Usha Consulting · All rights reserved.</span>
       <span>Made by <a class="text-blue-600 hover:underline dark:text-blue-400" href="https://github.com/sharmashrushti" target="_blank" rel="noopener noreferrer">Shrushti Sharma</a></span>
     </div>
-  `,
 };
