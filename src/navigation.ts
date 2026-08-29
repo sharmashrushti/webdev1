@@ -16,6 +16,9 @@ export const footerData = {
   secondaryLinks: [],
   socialLinks: [],
   footNote: `
-        footNote: `
-        © ${new Date().getFullYear()} Usha Consulting · All rights reserved. · Made by <a class="text-blue-600 hover:underline dark:text-blue-400" href="https://github.com/sharmashrushti" target="_blank" rel="noopener noreferrer">Shrushti Sharma</a>
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-2">
+      <span>&copy; ${new Date().getFullYear()} Usha Consulting &middot; All rights reserved.</span>
+      <span>Made by <a class="text-blue-600 hover:underline dark:text-blue-400" href="https://github.com/sharmashrushti" target="_blank" rel="noopener noreferrer">Shrushti Sharma</a></span>
+    </div>
+  `,
 };
