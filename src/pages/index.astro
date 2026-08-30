@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import Content from '~/components/widgets/Content.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
@@ -16,9 +17,10 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
   <Hero
+    classes={{ container: 'pb-0 md:pb-0' }}
     actions={[
       { variant: 'primary', text: 'Get in Touch', href: '/contact' },
-      { text: 'Our Services', href: '#services' },
+      { text: 'Our Services', href: '/services' },
     ]}
   >
     <Fragment slot="title">
@@ -27,9 +29,20 @@ const metadata = {
     <Fragment slot="subtitle">
       <span class="font-semibold">USHA Consulting</span> delivers specialized Safety, Environment &amp;
       Industrial Hygiene, and Electrical Safety consulting for chemical, pharmaceutical, oil &amp; gas,
-      and industrial clients across India. 200+ projects executed. 30 years of HSE expertise.
+      and industrial clients across India. 200+ projects executed. 30 years of hands-on HSE expertise.
     </Fragment>
   </Hero>
+
+  <!-- Stats Widget ****************** -->
+  <Stats
+    classes={{ container: 'py-8 md:py-10' }}
+    stats={[
+      { title: 'Projects Executed', amount: '200+' },
+      { title: 'Years of HSE Experience', amount: '30' },
+      { title: 'PHA Studies Facilitated', amount: '250+' },
+      { title: 'Training Man-Hours Delivered', amount: '1200+' },
+    ]}
+  />
 
   <!-- Features Widget: Services ***** -->
   <Features
@@ -37,9 +50,10 @@ const metadata = {
     tagline="What We Do"
     title="Our Services"
     subtitle="Comprehensive HSE consulting built on decades of hands-on industrial experience."
+    classes={{ container: 'pt-0 md:pt-0 lg:pt-0 pb-8 md:pb-10' }}
     items={[
       {
-        title: 'Process Hazard Analysis',
+        title: 'Process Hazard Assessment',
         description: 'HAZOP, HAZID, LOPA, BowTie, HIRA, and Dust Hazard Assessment studies led by an experienced PHA facilitator.',
         icon: 'tabler:alert-triangle',
       },
@@ -50,7 +64,7 @@ const metadata = {
       },
       {
         title: 'Audits',
-        description: 'Safety, environmental, fire, electrical, and legal compliance audits across process and manufacturing sites.',
+        description: '300+ safety, environmental, fire, electrical, and legal compliance audits across process and manufacturing sites.',
         icon: 'tabler:clipboard-check',
       },
       {
@@ -60,7 +74,7 @@ const metadata = {
       },
       {
         title: 'Training',
-        description: 'HSE, PSM, HAZOP, and construction safety training delivered in-company, online, and face-to-face.',
+        description: '1,200+ hours of HSE, PSM, HAZOP, and construction safety training delivered in-company, online, and face-to-face.',
         icon: 'tabler:school',
       },
       {
@@ -69,17 +83,22 @@ const metadata = {
         icon: 'tabler:flask',
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features>
 
   <!-- Content Widget: About preview ** -->
   <Content
     isReversed
     tagline="Who We Are"
     title="30 Years of HSE Expertise"
+    classes={{ container: 'py-8 md:py-10' }}
     image={{
-    src: '~/assets/images/logo.png',
-    alt: 'Usha Consulting',
-  }}
+      src: '~/assets/images/logo.png',
+      alt: 'Usha Consulting',
+    }}
     items={[
       {
         title: 'Qualified & certified',
@@ -100,18 +119,25 @@ const metadata = {
       Incorporated in October 2020, USHA Consulting has executed more than 200 projects across chemical, pharmaceutical,
       agrochemical, oil &amp; gas, steel, and power sectors in the last four years alone.
     </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
   </Content>
 
-  <!-- Stats Widget ****************** -->
-  <Stats
-    stats={[
-      { title: 'Projects Executed', amount: '200+' },
-      { title: 'Years of Experience', amount: '30' },
-      { title: 'PHA Studies Conducted', amount: '250+' },
-      { title: 'Training Hours Delivered', amount: '1200+' },
+  <!-- Features3 Widget: Sectors ***** -->
+  <Features3
+    tagline="Who We Work With"
+    title="Sectors We Serve"
+    subtitle="From bulk chemistry to city gas distribution — HSE consulting across process and industrial sectors."
+    columns={3}
+    classes={{ container: 'py-8 md:py-10' }}
+    items={[
+      { title: 'Chemical Industry', description: 'Bulk chemistry and fine chemistry manufacturing.', icon: 'tabler:flask-2' },
+      { title: 'Pharmaceuticals', description: 'API manufacturing and formulation units.', icon: 'tabler:pill' },
+      { title: 'Agrochemicals', description: 'Pesticide, insecticide, and herbicide manufacturing.', icon: 'tabler:seeding' },
+      { title: 'Oil & Gas', description: 'City gas distribution, cross-country pipelines, and petrochemicals.', icon: 'tabler:gas-station' },
+      { title: 'Power Generation', description: 'Thermal, gas-based, and captive power plants.', icon: 'tabler:bolt' },
+      { title: 'Steel & Aluminium', description: 'Integrated steel plants and metal manufacturing.', icon: 'tabler:building-factory-2' },
+      { title: 'Logistics & Warehousing', description: 'Warehouse and distribution network safety audits.', icon: 'tabler:truck' },
+      { title: 'Construction', description: 'Industrial, metro, and road projects.', icon: 'tabler:crane' },
+      { title: 'Cosmetics & FMCG, Education, and more', description: 'Cosmetic manufacturing, consumer goods, education, and other process industries.', icon: 'tabler:building-store' },
     ]}
   />
 
@@ -120,7 +146,7 @@ const metadata = {
     title="Frequently Asked Questions"
     subtitle="Common questions about our HSE consulting services."
     tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
+    classes={{ container: 'max-w-6xl py-8 md:py-10' }}
     items={[
       {
         title: 'What industries do you work with?',
@@ -147,6 +173,7 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
+    classes={{ container: 'pt-0 md:pt-0' }}
     actions={[
       { variant: 'primary', text: 'Contact Us', href: '/contact' },
     ]}

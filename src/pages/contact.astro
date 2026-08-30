@@ -12,12 +12,13 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText tagline="Contact" title="Let's Connect!" classes={{ container: 'pb-0 md:pb-0' }} />
 
   <ContactUs
     id="form"
     title="Drop us a message today!"
     subtitle="Have a question about our HSE services? Check our FAQs section first — you may find your answer right there. If not, we're happy to help."
+    classes={{ container: 'pt-4 md:pt-6 pb-8 md:pb-10' }}
     inputs={[
       {
         type: 'text',
@@ -44,6 +45,7 @@ const metadata = {
 
   <Features2
     title="Get in Touch"
+    classes={{ container: 'pt-0 md:pt-0' }}
     items={[
       {
         title: 'Phone',

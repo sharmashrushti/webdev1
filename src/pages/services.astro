@@ -1,220 +1,674 @@
 ---
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+interface ServiceItem {
+  id: string;
+  title: string;
+  summary: string;
+  description: string;
+  subServices: string[];
+  icon: string;
+}
+
+const services: ServiceItem[] = [
+  {
+    id: "pha",
+    title: "Process Hazard Assessment (PHA)",
+    summary: "HAZID, HAZOP, LOPA, BowTie, HIRA and Quantitative Risk Analysis — 250+ studies conducted as facilitators/chairpersons.",
+    description:
+      "We have facilitated and chaired more than 250 hazard identification and risk analysis studies across the chemical, pharmaceutical, oil & gas, and process industries, helping clients identify, evaluate, and control process-related hazards before they lead to incidents.",
+    subServices: [
+      "Hazard Identification (HAZID)",
+      "Hazard and Operability Study (HAZOP)",
+      "Layer of Protection Analysis (LOPA)",
+      "BowTie Analysis",
+      "Hazard Identification & Risk Analysis (HIRA)",
+      "Dust Hazard Assessment (DHA)",
+      "Quantitative Risk Analysis (QRA)",
+      "Simultaneous Operations (SIMOPS)",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 22 20 2 20 Z"/><line x1="12" y1="9.5" x2="12" y2="14.5"/><circle cx="12" cy="17.2" r="0.4" fill="currentColor" stroke="none"/></svg>`,
+  },
+  {
+    id: "risk-management",
+    title: "Risk Management",
+    summary: "Design safety review, hazardous area classification, layout & facility siting, and pre-start-up safety review.",
+    description:
+      "Risk management support spanning the full project lifecycle — from design-stage safety reviews through to pre-start-up assessments — so risk is identified and controlled long before it reaches the operating floor.",
+    subServices: [
+      "Process Design Safety Review",
+      "Hazardous Area Classification (HAC)",
+      "Highly Hazardous Chemicals (HHC) Review",
+      "Dust Hazard Analysis (DHA) — NFPA/ATEX",
+      "Dryer Vent Assessment",
+      "Chemical Reaction Hazard (CRH)",
+      "Pre-Start-up Safety Review (PSSR)",
+      "Layout Review & Facility Siting",
+      "Model Review (30% / 60% / 90%)",
+      "Transport Risk Management",
+      "Fire Prevention & Fighting System Adequacy Review",
+      "Safety Report as per Schedule 8 {Rule 10(1)} of MSIHC Rules 1989",
+      "Goods & Passenger Lift Management",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 5 V11 C20 16 16.5 20 12 22 C7.5 20 4 16 4 11 V5 Z"/><path d="M8.5 12 11 14.5 16 9"/></svg>`,
+  },
+  {
+    id: "psm",
+    title: "Process Safety Management (PSM)",
+    summary: "End-to-end PSM implementation as per OSHA 29 CFR 1910.119 (14 elements) or CCPS (20 elements).",
+    description:
+      "End-to-end PSM implementation as per OSHA 29 CFR 1910.119 (14 elements) or the CCPS framework (20 elements), delivered in three structured phases — from gap assessment through roadmap development to 6/12/18-month handholding and monitoring.",
+    subServices: [
+      "Gap Assessment (Phase 1, 3–5 days)",
+      "Roadmap Development & Apex Committee Formation",
+      "PSM Training for Steering Committee & Element Champions",
+      "Element-wise PSM Procedure Development",
+      "Element-wise Champion Training",
+      "PSM Implementation Launch",
+      "PSM Awareness Training for Employees",
+      "KPI Development for Each Element",
+      "Training & Competence Development",
+      "Implementation Monitoring (6/12/18-month handholding)",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4 V2.5 H15 V4"/><path d="M8.5 13 11 15.5 16 10"/></svg>`,
+  },
+  {
+    id: "bbs",
+    title: "Behaviour Based Safety",
+    summary: "Design and implementation of Behaviour Based Safety (BBS) programmes across client sites.",
+    description:
+      "Design and implementation of Behaviour Based Safety (BBS) programmes that shift safety culture from compliance to ownership, using structured observation, feedback and coaching to reduce at-risk behaviour on the shop floor.",
+    subServices: [
+      "BBS Programme Design",
+      "Observation & Feedback System Setup",
+      "Employee & Supervisor Coaching",
+      "Safety Perception Surveys",
+      "BBS Training for Workforce",
+      "Ongoing Programme Monitoring & Review",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><path d="M2 20 C2 15.5 5 13.5 8 13.5 C11 13.5 14 15.5 14 20"/><circle cx="17" cy="9" r="2.3"/><path d="M14.5 20 C14.7 16.5 16.5 15 18.5 15 C20.7 15 22.3 16.5 22.5 20"/></svg>`,
+  },
+  {
+    id: "audits",
+    title: "Audits",
+    summary: "HSE due diligence, legal compliance, PSCI, PSM gap assessment, environment, electrical and security audits.",
+    description:
+      "300+ safety, environment, fire, and electrical audits conducted across pharma, chemical, oil & gas, and infrastructure sectors, benchmarking client operations against regulatory and international standards.",
+    subServices: [
+      "HSE Due Diligence Audit (Acquisitions)",
+      "Legal Compliance Audit",
+      "Pharmaceutical Supply Chain Initiative (PSCI) Audit",
+      "IS 14489:2018 Occupational Health & Safety Audit",
+      "PSM Gap Assessment — 29 CFR 1910.119 (14 elements)",
+      "PSM Gap Assessment — CCPS (20 elements)",
+      "Environment Risk Audit (Water Audit, Environmental Due Diligence)",
+      "Electrical Safety Audit",
+      "Oil Industry Safety Directorate (OISD) Audit",
+      "Facility Physical Security Audit",
+      "Corporate Security Audit",
+      "Fire Prevention & Fire Fighting Audit",
+      "FM Global Standard Audit",
+      "Business Continuity Management Programme Audit",
+      "Property Audit",
+      "Warehouse Audit",
+      "Gujarat Factories Rules 1963 — Schedule XIX (Chemical Works)",
+      "Gujarat Factories Rules 1963 — Schedule XIV (CS₂ / H₂S Processes)",
+      "Construction SHE Audit",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>`,
+  },
+  {
+    id: "construction-safety",
+    title: "Construction Safety",
+    summary: "Work at Height, Scaffolding, Excavation, Lifting Tools & Tackle, Machine Guarding and Permit systems.",
+    description:
+      "Dedicated safety oversight for construction and infrastructure projects — covering everything from work-at-height and excavation to equipment inspection and permit systems — tailored for road, metro, and industrial project sites.",
+    subServices: [
+      "Work at Height",
+      "Scaffolding",
+      "Excavation Safety",
+      "Lifting Tools & Tackle",
+      "Machine Guarding",
+      "Electrical Safety (Site)",
+      "Permit to Work",
+      "Job Safety Analysis",
+      "Construction SHE Audit",
+      "Crane Operator/Signaller Certification (IS 16866:2018 / ISO 15513:2000)",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="21" x2="6" y2="3"/><line x1="6" y1="3" x2="19" y2="3"/><line x1="19" y1="3" x2="19" y2="8"/><line x1="6" y1="9" x2="14" y2="9"/><line x1="14" y1="9" x2="14" y2="14"/><line x1="2" y1="21" x2="10" y2="21"/></svg>`,
+  },
+  {
+    id: "legal-compliance",
+    title: "Legal Compliance",
+    summary: "Legal register upkeep, compliance audits, and legislation training across HSE, electrical and hygiene.",
+    description:
+      "Helping organisations stay ahead of statutory obligations across safety, environment, electrical, and industrial hygiene legislation — from legal register upkeep to focused compliance audits.",
+    subServices: [
+      "Legal Register Preparation & Maintenance",
+      "Legal Compliance Audit",
+      "Legal Legislation Training (Environment, Safety, Industrial Hygiene, Electrical)",
+      "Gujarat Factories Rules 1963 — Schedule XIX Compliance Audit",
+      "Gujarat Factories Rules 1963 — Schedule XIV Compliance Audit",
+      "IS 14489:2018 Occupational Health & Safety Audit",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="4" y1="7" x2="12" y2="3"/><line x1="12" y1="3" x2="20" y2="7"/><path d="M2 7 6 15 10 7 Z"/><path d="M14 7 18 15 22 7 Z"/></svg>`,
+  },
+  {
+    id: "training",
+    title: "Training",
+    summary: "1,200+ man-hours delivered — in-company, open, face-to-face and webinar courses for every level.",
+    description:
+      "1,200+ man-hours of HSE training delivered through in-company and open courses, face-to-face and webinar formats, customised for managers, engineers, and operators alike, and led by trainers with hands-on industrial incident experience.",
+    subServices: [
+      "Process Safety Management (OSHA 29 CFR 1910.119 / CCPS)",
+      "Process Hazard Assessment Leader",
+      "Chemical Reaction Hazard",
+      "Chemical Hazard Communication / HAZMAT",
+      "Hazard Identification & Risk Assessment",
+      "HAZOP (IChemE & CCPS)",
+      "Dust Hazard Assessment (DHA)",
+      "Hazardous Area Classification",
+      "Incident Investigation & Root Cause Analysis",
+      "Boiler Safety",
+      "Industrial Hygiene",
+      "Legal Legislation",
+      "Electrical Safety",
+      "Lock Out & Tag Out (LOTO)",
+      "Machine Guarding",
+      "Permit to Work",
+      "Safety Leadership — Construction",
+      "Work at Height",
+      "Scaffolding Inspector & Supervisor",
+      "Excavation Safety",
+      "Inspection of Lifting Tools & Tackle",
+      "Crane Operator/Signaller Certification",
+      "Welding & Gas Cutting Safety",
+      "Behaviour Based Safety",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9 12 4 22 9 12 14 Z"/><path d="M6 11 V16 C6 18 9 19.5 12 19.5 C15 19.5 18 18 18 16 V11"/><line x1="22" y1="9" x2="22" y2="15"/></svg>`,
+  },
+  {
+    id: "fire-safety",
+    title: "Fire Prevention and Fire Fighting",
+    summary: "Fire risk assessment, system adequacy reviews, fire load calculation and FM Global audits.",
+    description:
+      "Fire risk assessment and system adequacy reviews backed by hands-on fire load calculations and audits, helping facilities meet FM Global and national fire safety benchmarks.",
+    subServices: [
+      "Fire Prevention & Fire Fighting Manual Development",
+      "Fire Prevention & Fire Fighting Audit",
+      "FM Global Standard Compliance Audit",
+      "Fire Load Calculation",
+      "Fire Fighting System Adequacy Review",
+      "Electrical & Fire Safety Audit (National Building Code 2016)",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 C9 6 6 9 6 13 a6 6 0 0 0 12 0 c0 -2 -1 -3 -2 -4 c0.3 2 -0.7 3 -2 3 c-1.7 0 -2.3 -1.6 -1 -3.5 C14 6 13 4 12 2 Z"/></svg>`,
+  },
+  {
+    id: "electrical-safety",
+    title: "Electrical Safety",
+    summary: "Electrical safety manuals, OISD-standard audits, LOTO, and training for plant and site teams.",
+    description:
+      "Electrical safety documentation, audits, and training covering everything from LOTO procedures to large-scale pipeline and warehouse network audits against OISD and Electricity Rules standards.",
+    subServices: [
+      "Electrical Safety Manual Development",
+      "Electrical Safety Audit (OISD Standards, Electricity Rules 1956)",
+      "Electrical & Fire Safety Audit (National Building Code 2016)",
+      "Lock Out & Tag Out (LOTO)",
+      "Electrical Safety Training",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13 H11 L9 21 19 10 H13 Z"/></svg>`,
+  },
+  {
+    id: "environment",
+    title: "Environment",
+    summary: "Environment procedures, risk audits, clearance approvals, and treatment plant design.",
+    description:
+      "Environmental compliance and engineering support spanning procedure development, risk audits, clearance approvals, and the design of treatment infrastructure.",
+    subServices: [
+      "Environment Procedure Development",
+      "Environment Risk Audit (Water Audit, Environmental Due Diligence)",
+      "Environment Clearance Approval Assistance",
+      "Effluent Treatment Plant (ETP) Design",
+      "Multiple Effect Evaporator (MEE) Design",
+      "Incinerator Design",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 C4 10 10 4 20 4 C20 14 14 20 4 20 Z"/><line x1="4" y1="20" x2="14" y2="10"/></svg>`,
+  },
+  {
+    id: "standard-preparation",
+    title: "Standard Preparation",
+    summary: "HSE manuals, permit systems, MOC, LOTO and material handling standards built from the ground up.",
+    description:
+      "Ground-up development of the HSE manuals, procedures, and permit systems that form the backbone of a compliant, well-run facility.",
+    subServices: [
+      "HSE Manual (Construction / Process)",
+      "Contractor Safety Management (CSM)",
+      "Legal Register",
+      "Management of Change (MOC)",
+      "Mechanical / Asset Integrity Management",
+      "Pre-Start-up Safety Review (PSSR)",
+      "Electrical Safety Manual",
+      "Lock Out & Tag Out (LOTO)",
+      "Machine Guarding",
+      "Permit to Work",
+      "Confined Space Permit",
+      "Hot Work Permit",
+      "Work at Height",
+      "Excavation Safety",
+      "Scaffolding",
+      "Material Handling Standard (Lifting Tools & Tackle, EOT etc.)",
+      "Environment Procedure",
+      "Fire Prevention & Fire Fighting Manual",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6 C10 4.5 6.5 4 3 4 V19 C6.5 19 10 19.5 12 21 C14 19.5 17.5 19 21 19 V4 C17.5 4 14 4.5 12 6 Z"/><line x1="12" y1="6" x2="12" y2="21"/></svg>`,
+  },
+  {
+    id: "industrial-hygiene",
+    title: "Industrial Hygiene",
+    summary: "Chemical risk and qualitative exposure assessments across transportation and task-based scenarios.",
+    description:
+      "Exposure and chemical risk assessments that quantify workplace health hazards, with full Industrial Hygiene programmes implemented across multiple facilities.",
+    subServices: [
+      "Safety During Transportation of Chemicals",
+      "Chemical Risk Assessment",
+      "Qualitative Exposure Assessment (Industrial Hygiene Risk Assessment)",
+      "Task-Based Qualitative Industrial Hygiene Risk Assessment",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8 H14 a2.5 2.5 0 1 0 -2.5 -2.5"/><path d="M3 13 H18 a2.5 2.5 0 1 1 -2.5 2.5"/><path d="M3 18 H10"/></svg>`,
+  },
+  {
+    id: "consulting-services",
+    title: "Consulting Services",
+    summary: "Technical support, M&A due diligence, and non-financial data verification for sustainability reporting.",
+    description:
+      "Broader technical and strategic support for organisations navigating acquisitions, sustainability reporting, and CSR obligations.",
+    subServices: [
+      "Technical Support & Gap Assessment",
+      "EHS & Legal Due Diligence (Mergers & Acquisitions)",
+      "Verification of Non-Financial Data (Sustainability Reporting)",
+      "CSR Gap Assessment & Technical Support",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7 V5 a2 2 0 0 1 2 -2 h4 a2 2 0 0 1 2 2 V7"/><line x1="3" y1="12" x2="21" y2="12"/></svg>`,
+  },
+  {
+    id: "inspection-services",
+    title: "Inspection Services",
+    summary: "Certified crane, lifting tackle and lift inspections ensuring mechanical integrity and compliance.",
+    description:
+      "Certified inspection of lifting and material-handling equipment, ensuring mechanical integrity and regulatory compliance across facilities.",
+    subServices: [
+      "Crane Inspection (ASME B30.5 & API 2D Standards)",
+      "Lifting Tools & Tackle Inspection",
+      "Goods & Passenger Lift Health Assessment",
+      "Scaffolding Inspection",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/><line x1="15" y1="15" x2="21" y2="21"/></svg>`,
+  },
+];
+
 
 const metadata = {
-  title: 'Our Services',
+  title: 'Our Services — USHA Consulting',
+  description:
+    "Safety, Environment & Industrial Hygiene services from USHA Consulting — Process Hazard Assessment, Risk Management, PSM, Audits, Training and more.",
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    tagline="Our Services"
-    title="HSE Consulting, Audits & Training"
-    subtitle="Usha Consulting provides specialised services in Safety, Environment & Industrial Hygiene and Electrical Safety, with over 200 projects executed across 30 years of combined HSE experience."
-    actions={[{ variant: 'primary', text: 'Contact Us', href: '/contact' }]}
-    image={{
-      src: '~/assets/images/header.png',
-      alt: 'Usha Consulting Services',
-    }}
+  <!-- HeroText Widget ******************* -->
+  <HeroText
+    tagline="What We Do"
+    title="Our Services"
+    classes={{ container: 'pb-0 md:pb-0' }}
   />
 
-  <!-- Features2 Widget ************** -->
+  <section class="services-page-wrap relative not-prose mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-10">
+    <p class="mb-8 text-center text-lg text-muted dark:text-slate-400">
+      Tap any service below to see what it covers and the full list of sub-services included under it.
+    </p>
 
-  <Features2
-    title="What We Offer"
-    subtitle="A full range of HSE consulting services, tailored to industrial and process safety needs."
-    columns={3}
-    items={[
-      {
-        title: 'Process Hazard Assessment (PHA)',
-        description:
-          'HAZID, HAZOP, LOPA, BowTie, HIRA, Dust Hazard Assessment (DHA) and Quantitative Risk Analysis (QRA) — 250+ studies conducted as facilitators/chairpersons.',
-        icon: 'tabler:alert-triangle',
-      },
-      {
-        title: 'Risk Management',
-        description:
-          'Process Design Safety Review, Hazardous Area Classification, Highly Hazardous Chemicals review, Layout & Facility Siting, and Pre-Start-up Safety Review (PSSR).',
-        icon: 'tabler:shield-check',
-      },
-      {
-        title: 'Process Safety Management (PSM)',
-        description:
-          'End-to-end PSM implementation as per OSHA 29 CFR 1910.119 (14 elements) or CCPS (20 elements), from gap assessment through handholding and monitoring.',
-        icon: 'tabler:clipboard-check',
-      },
-      {
-        title: 'Behaviour Based Safety',
-        description:
-          'Design and implementation of Behaviour Based Safety programs to build a stronger safety culture across your workforce.',
-        icon: 'tabler:users',
-      },
-      {
-        title: 'Audits',
-        description:
-          'HSE due diligence, legal compliance, PSCI, PSM gap assessment, environment risk, and electrical safety audits — 300+ audits completed to date.',
-        icon: 'tabler:checklist',
-      },
-      {
-        title: 'Construction Safety',
-        description:
-          'Work at Height, Scaffolding, Excavation Safety, Lifting Tools & Tackle, and full construction SHE audits for industrial, metro and road projects.',
-        icon: 'tabler:crane',
-      },
-      {
-        title: 'Legal Compliance',
-        description:
-          'Legal register development and compliance audits against relevant national and state safety, environment and electrical regulations.',
-        icon: 'tabler:gavel',
-      },
-      {
-        title: 'Training',
-        description:
-          'In-company and open courses for managers, engineers and operators — PSM, HAZOP, LOTO, scaffolding, machine guarding, incident investigation and more. 1,200+ training man-hours delivered.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Fire Prevention & Fire Fighting',
-        description:
-          'Fire load calculation, fire audits, and Fire Prevention & Fire Fighting manual preparation to safeguard people and assets.',
-        icon: 'tabler:flame',
-      },
-      {
-        title: 'Electrical Safety',
-        description:
-          'Electrical safety audits and manuals, including compliance with National Building Code and Electricity Rules.',
-        icon: 'tabler:bolt',
-      },
-      {
-        title: 'Environment',
-        description:
-          'Environment risk audits, water audits, environmental due diligence, and support in securing Environment Clearance.',
-        icon: 'tabler:leaf',
-      },
-      {
-        title: 'Standard Preparation',
-        description:
-          'Development of HSE manuals, Contractor Safety Management, Management of Change (MOC), Permit to Work, LOTO, and other core safety standards.',
-        icon: 'tabler:file-text',
-      },
-      {
-        title: 'Industrial Hygiene',
-        description:
-          'Chemical risk assessment, qualitative exposure assessment, and task-based Industrial Hygiene Risk Assessment.',
-        icon: 'tabler:flask',
-      },
-      {
-        title: 'Consulting Services',
-        description:
-          'Tailored HSE consulting support across the project lifecycle — from design review to operational safety management.',
-        icon: 'tabler:message-circle',
-      },
-      {
-        title: 'Inspection Services',
-        description:
-          'Crane inspection (per ASME 30.5 and API 2D), goods/passenger lift health assessment, and lifting tools & tackle inspection.',
-        icon: 'tabler:search',
-      },
-    ]}
-  />
+    <div class="services-grid" id="servicesGrid" aria-label="Service list">
+      {services.map((service) => (
+        <button
+          type="button"
+          class="service-card"
+          data-target={`detail-${service.id}`}
+          aria-expanded="false"
+          aria-controls={`detail-${service.id}`}
+        >
+          <span class="card-icon" set:html={service.icon} />
+          <h3>{service.title}</h3>
+          <p>{service.summary}</p>
+          <span class="card-cta">View details →</span>
+        </button>
+      ))}
+    </div>
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Gap Assessment',
-        description:
-          'A focused 3–5 day review to identify where your current safety systems stand against the target PSM standard.',
-        icon: 'tabler:list-search',
-      },
-      {
-        title: 'Road Map Development',
-        description:
-          'Formation of an Apex Committee, PSM training for the steering committee and element champions, and development of element-wise procedures.',
-        icon: 'tabler:route',
-      },
-      {
-        title: 'Handholding & Implementation',
-        description:
-          'A structured 6/12/18-month handholding phase — launch, employee awareness training, KPIs per element, and ongoing progress monitoring.',
-        icon: 'tabler:hand-stop',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/gap-assessment.png',
-      alt: 'PSM Implementation Process',
-      width: 1024,
-      height: 1536,
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Our Process Safety Management Approach
-      </h3>
-      <p class="text-muted mb-4">
-        We implement PSM as per OSHA 29 CFR 1910.119 (14 elements) or the CCPS 20-element framework, in three clear
-        phases.
+    <div class="service-detail-area" id="serviceDetailArea">
+      <p class="detail-placeholder" id="detailPlaceholder">
+        Select a service above to see the full scope of work and sub-services.
       </p>
-    </Fragment>
-  </Content>
 
-  <!-- Content Widget **************** -->
+      {services.map((service) => (
+        <article class="detail-panel" id={`detail-${service.id}`} data-panel>
+          <button type="button" class="detail-close" aria-label="Close service details">✕</button>
+          <div class="detail-icon" set:html={service.icon} />
+          <h2>{service.title}</h2>
+          <p class="detail-description">{service.description}</p>
+          <h3 class="sub-heading">What this covers</h3>
+          <ul class="sub-list">
+            {service.subServices.map((sub) => (
+              <li>{sub}</li>
+            ))}
+          </ul>
+          <a class="detail-cta" href="/contact">Ask us about this service →</a>
+        </article>
+      ))}
+    </div>
+  </section>
 
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: '30 Years of Experience',
-        description: 'Three decades of hands-on HSE leadership across construction, oil & gas, FMCG and chemical industries.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: '200+ Projects Executed',
-        description: 'A proven track record across pharmaceuticals, agrochemicals, oil & gas, steel, power and more.',
-        icon: 'tabler:briefcase',
-      },
-      {
-        title: '300+ Audits Completed',
-        description: 'Safety, environment, fire, electrical, PSCI and PSM audits conducted for leading Indian and international companies.',
-        icon: 'tabler:certificate',
-      },
-      {
-        title: 'Certified Expertise',
-        description: 'ISO 9001, 14001 & 45001 auditor, NEBOSH-certified, CE marking (PPE) auditor, and approved PSCI auditor.',
-        icon: 'tabler:award',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/why-us.png',
-      alt: 'Why Choose Usha Consulting',
-      width: 1024,
-      height: 1536,
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Why Choose Usha Consulting</h3>
-    </Fragment>
-  </Content>
+  <script>
+    const detailArea = document.getElementById('serviceDetailArea');
+    const placeholder = document.getElementById('detailPlaceholder');
+    const cards = Array.from(document.querySelectorAll('.service-card'));
+    const panels = Array.from(document.querySelectorAll('.detail-panel'));
 
-  <!-- CallToAction Widget *********** -->
+    function closeAll() {
+      panels.forEach((p) => p.classList.remove('is-visible'));
+      cards.forEach((c) => {
+        c.classList.remove('is-active');
+        c.setAttribute('aria-expanded', 'false');
+      });
+      if (placeholder) placeholder.classList.remove('is-hidden');
+    }
 
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get in Touch',
-        href: '/contact',
-      },
-    ]}
-    title="Let's discuss your HSE needs"
-    subtitle="Reach out to Usha Consulting for audits, training, PSM implementation, or process safety support."
-  />
+    function openPanel(targetId: string, sourceCard: Element) {
+      panels.forEach((p) => p.classList.toggle('is-visible', p.id === targetId));
+      cards.forEach((c) => {
+        const isThis = c === sourceCard;
+        c.classList.toggle('is-active', isThis);
+        c.setAttribute('aria-expanded', String(isThis));
+      });
+      if (placeholder) placeholder.classList.add('is-hidden');
+      if (detailArea) detailArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const targetId = (card as HTMLElement).dataset.target;
+        if (!targetId) return;
+        const alreadyOpen = card.classList.contains('is-active');
+        if (alreadyOpen) {
+          closeAll();
+        } else {
+          openPanel(targetId, card);
+        }
+      });
+    });
+
+    panels.forEach((panel) => {
+      panel.querySelector('.detail-close')?.addEventListener('click', () => {
+        closeAll();
+      });
+    });
+  </script>
+
+  <style>
+    .services-page-wrap {
+      --navy: #14264d;
+      --teal: #0e7d82;
+      --teal-light: #e7f5f5;
+      --border: #e4e8ed;
+      --radius: 14px;
+    }
+
+    :global(.dark) .services-page-wrap {
+      --navy: #dbe4ff;
+      --teal: #4fd1d9;
+      --teal-light: rgba(79, 209, 217, 0.08);
+      --border: #2a3346;
+    }
+
+    /* ---------- grid ---------- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      text-align: left;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+      font-family: inherit;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 10px 24px rgba(20, 38, 77, 0.09);
+      transform: translateY(-2px);
+      border-color: var(--teal);
+    }
+
+    .service-card:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    .service-card.is-active {
+      border-color: var(--teal);
+      background: var(--teal-light);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .service-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+
+    .service-card p {
+      margin: 0;
+      color: inherit;
+      opacity: 0.75;
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    .card-cta {
+      margin-top: 0.6rem;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    /* ---------- detail area ---------- */
+    .service-detail-area {
+      margin-top: 2.5rem;
+      min-height: 4rem;
+    }
+
+    .detail-placeholder {
+      color: inherit;
+      opacity: 0.65;
+      font-size: 0.98rem;
+      text-align: center;
+      padding: 2rem 1rem;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+    }
+
+    .detail-placeholder.is-hidden {
+      display: none;
+    }
+
+    .detail-panel {
+      display: none;
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: 0 16px 40px rgba(20, 38, 77, 0.1);
+    }
+
+    .detail-panel.is-visible {
+      display: block;
+      animation: fadeIn 0.22s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .detail-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      border: none;
+      background: transparent;
+      font-size: 1.2rem;
+      line-height: 1;
+      color: inherit;
+      opacity: 0.6;
+      cursor: pointer;
+      padding: 0.35rem;
+      border-radius: 50%;
+    }
+
+    .detail-close:hover {
+      background: var(--teal-light);
+      color: var(--navy);
+      opacity: 1;
+    }
+
+    .detail-icon {
+      width: 52px;
+      height: 52px;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .detail-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .detail-panel h2 {
+      margin: 0 0 0.75rem;
+      color: var(--navy);
+      font-size: 1.6rem;
+    }
+
+    .detail-description {
+      color: inherit;
+      opacity: 0.85;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin: 0 0 1.75rem;
+      max-width: 68ch;
+    }
+
+    .sub-heading {
+      margin: 0 0 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--teal);
+    }
+
+    .sub-list {
+      list-style: none;
+      margin: 0 0 2rem;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem 2rem;
+    }
+
+    .sub-list li {
+      position: relative;
+      padding-left: 1.4rem;
+      font-size: 0.96rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .sub-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .detail-cta {
+      display: inline-block;
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.98rem;
+    }
+
+    .detail-cta:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 960px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sub-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-panel {
+        padding: 1.75rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .service-card,
+      .detail-panel {
+        transition: none;
+        animation: none;
+      }
+    }
+  </style>
 </Layout>

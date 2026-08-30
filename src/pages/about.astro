@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
@@ -13,6 +14,7 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
   <Hero
+    classes={{ container: 'pb-0 md:pb-0' }}
     actions={[{ variant: 'primary', text: 'Get in Touch', href: '/contact' }]}
   >
     <Fragment slot="title">About USHA Consulting</Fragment>
@@ -28,10 +30,11 @@ const metadata = {
     isReversed
     tagline="Our Team"
     title="Ritesh Sharma"
+    classes={{ container: 'py-8 md:py-10' }}
     image={{
-    src: '~/assets/images/dad-photo.jpeg',
-    alt: 'Ritesh Sharma',
-  }}
+      src: '~/assets/images/dad-photo.jpeg',
+      alt: 'Ritesh Sharma',
+    }}
     items={[
       {
         title: 'Qualifications',
@@ -63,6 +66,7 @@ const metadata = {
 
   <!-- Stats Widget ****************** -->
   <Stats
+    classes={{ container: 'py-8 md:py-10' }}
     stats={[
       { title: 'PHA Studies Facilitated', amount: '250+' },
       { title: 'Audits Conducted', amount: '300+' },
@@ -73,10 +77,11 @@ const metadata = {
 
   <!-- Content Widget: Track record ** -->
   <Content
+    classes={{ container: 'py-8 md:py-10' }}
     image={{
-    src: '~/assets/images/industrial.png',
-    alt: 'Ritesh Sharma',
-  }}
+      src: '~/assets/images/industrial.png',
+      alt: 'Ritesh Sharma',
+    }}
     items={[
       {
         title: 'PSCI Audits',
@@ -102,8 +107,35 @@ const metadata = {
     </Fragment>
   </Content>
 
+  <!-- Features3 Widget: More accomplishments ** -->
+  <Features3
+    tagline="Beyond Audits & Training"
+    title="A Full HSE Capability"
+    subtitle="Engineering, inspection, and investigative work that rounds out the practice."
+    columns={3}
+    classes={{ container: 'pt-0 md:pt-0 pb-8 md:pb-10' }}
+    items={[
+      {
+        title: 'Crane & lift inspection',
+        description: '200+ crane inspections (ASME B30.5 / API 2D) and 50+ goods/passenger lift health assessments.',
+        icon: 'tabler:crane',
+      },
+      {
+        title: 'Engineering design',
+        description: 'Design of Effluent Treatment Plants, Multiple Effect Evaporators, and Incinerators.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Investigations & culture',
+        description: 'Incident investigations for 5+ incidents, 5+ Behaviour Based Safety rollouts, and 10+ perception surveys.',
+        icon: 'tabler:search',
+      },
+    ]}
+  />
+
   <!-- CallToAction Widget *********** -->
   <CallToAction
+    classes={{ container: 'pt-0 md:pt-0' }}
     actions={[{ variant: 'primary', text: 'Contact Us', href: '/contact' }]}
   >
     <Fragment slot="title">Ready to discuss your HSE needs?</Fragment>

@@ -1,0 +1,26 @@
+---
+// src/components/common/Logo.astro
+//
+// This is the standard AstroWind location for the site's header logo —
+// it is already rendered top-left on every page by
+// src/components/widgets/Header.astro (included in every page via
+// src/layouts/PageLayout.astro), so no per-page changes are needed.
+//
+// If your project's Logo.astro lives somewhere else or looks different,
+// paste its current content back to me and I'll merge this into it instead.
+
+import { Image } from 'astro:assets';
+import logo from '~/assets/images/usha-logo-header.jpeg';
+---
+
+<a href="/" class="flex items-center shrink-0 py-1" aria-label="USHA Consulting — Home">
+  <Image
+    src={logo}
+    alt="USHA Consulting — Safety, Environment & Industrial Hygiene"
+    width={520}
+    height={100}
+    class="h-9 sm:h-11 w-auto"
+    loading="eager"
+    format="webp"
+  />
+</a>
